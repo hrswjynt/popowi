@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				position: relative;
+				background-color: red;
+				height: 100vh;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+			}
+
+			img {
+				height: 300px;
+				padding: 20px;
+			}
+		</style>
+
+		<script>
+			let audio = new Audio('./jokowi-remix.mp3');
+			let poin = 0;
+
+			function jokowi() {
+				if (audio.paused) {
+					audio.play();
+				} else {
+					audio.pause();
+					audio.currentTime = 0;
+					audio.play();
+				}
+
+				document.getElementById('popowi').src = './jokowi-kaget.png';
+
+				setTimeout(function () {
+					document.getElementById('popowi').src = './jokowi-idle.png';
+				}, 200);
+
+				poin += 1;
+				document.getElementById('poin').innerText = poin;
+			}
+		</script>
+	</head>
+	<body>
+		<h1 id="poin">0</h1>
+		<img id="popowi" src="./jokowi-idle.png" onclick="jokowi()" />
+
+		<script src="./index.js"></script>
+	</body>
+</html>
